@@ -1,0 +1,19 @@
+{
+  "name": "5iv7_experimento",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CinthyaJG9/5IV7_Jimenez_Garcia_Cinthya_Fernanda_AP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CinthyaJG9/5IV7_Jimenez_Garcia_Cinthya_Fernanda_AP/issues"
+  },
+  "homepage": "https://github.com/CinthyaJG9/5IV7_Jimenez_Garcia_Cinthya_Fernanda_AP#readme"
+}
