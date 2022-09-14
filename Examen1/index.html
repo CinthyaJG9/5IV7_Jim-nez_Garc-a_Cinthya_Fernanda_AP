@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking Bad</title>
+    <script src="https://kit.fontawesome.com/101326ea39.js" crossorigin="anonymous" >
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <section>
+        <header>
+            <h1>Breaking Bad</h1>
+        </header>
+    </section>
+    <main class="body-container">
+        <section class="half">
+        
+            <div class="d-flex center-flex" >
+                <input type="text" id="perName" class="lcd-input" placeholder="Ingresa el nombre del personaje" >
+                <input type="hidden" id="perID" value="0"  >
+                <button id="btnSearch" class="btn" >
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <div class="columns-elements" >
+                    <button class="btn" id="btnUp"  >
+                        <i class="fa-solid fa-caret-up"></i>
+                    </button>
+                    <button id="btnDown" class="btn" >
+                        <i class="fa-solid fa-caret-down"></i>
+                    </button>
+                </div> 
+            </div>
+            <div id="perdisplay-container" class="d-flex center-flex perdisplay-container" >
+                <img  class="perdisplay" src="img/01.jpg" alt="Perdisplay">
+            </div>
+
+        
+    </section>
+
+    <section class="half" id="perData">
+        <h3 id="perNameResult" class="center-flex" ></h3>
+        <div class="center-flex" >
+            <div>Cumpleaños</div>
+            <div id="perBirthday" class="per-birthday-container" ></div>
+        </div>
+        <table class="per-stat-table" > 
+            <thead>
+                <tr>
+                    <td colspan="6" >Datos</td>
+                </tr>
+                <tr>
+                    <td>occupation</td>
+                    <td>status</td>
+                    <td>nickname</td>
+                    <td>appearance</td>
+                    <td>portrayed</td>
+                    <td>category</td>
+                </tr>
+            </thead>
+            <tbody id="perStats" >
+                <tr>
+                    <td class="per-stat" id="perStatOccupation" >0</td>
+                    <td class="per-stat" id="perStatStatus" >0</td>
+                    <td class="per-stat" id="perStatNickname" >0</td>
+                    <td class="per-stat" id="perStatAppearance" >0</td>
+                    <td class="per-stat" id="perStatPortrayed" >0</td>
+                    <td class="per-stat" id="perStatCategory" >0</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+    </main>
+    <script src="FetchApi.js" ></script>
+</body>
+</html>
