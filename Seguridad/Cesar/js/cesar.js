@@ -1,97 +1,79 @@
-var cesar= cesar||(function(){
+var cesar = cesar || (function(){
+    var proceso = function(txt, numero, action){
+        var replace = (function(){
+            //primero necesito tener la matriz del alfabeto
+            //hay que recorrar que el cifrado lo hace caracter por caracter
+            var abc = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
+                        'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 
+                        'x', 'y', 'z'];
+            var l = abc.length;
 
-    var proceso= function(txt, desp, action){
+            //necesitamos obtener la posicion que va  a venir por parte 
+            //de la llave privada
 
-        /**primero hay que recorrer la matriz del alfabeto, hay que recorrer cada elemento del abecedario
-         * conforme a su orden
-         */
-        var abc=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 
-        'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+            return function(c){
+                //vamos a saber la posicion
+                var i = abc.indexOf(c.toLowerCase());
+                //necesitamos saber es donde estamos adentro de la matriz
+                //como la vamos a recorrer y que pasa cuando llegue
+                //al final?
+                //alert(c);
+                //alert(i);
 
-        var l= abc.length;
+                if(i != -1){
+                    //primero obtenemos la posicion para el desp
+                    var pos = i;
+                    //que voy a hacer cifrar o descifrar
+                    if(action){
+                        //cifrar para adelante
+                        pos += numero;
+                        //como se va a mover
+                        pos -= (pos >= l)?l:0;
+                    }else{
+                        //descifrar para atras
+                        pos -= numero;
+                        //movimiento
+                        pos += (pos < 0)?l:0;
+                    }
+                    return abc[pos];
 
-        //nececitamos una funcion para obtener la posicion que va a venir por la parte privada
-        //o parte del usuario
-
-        return function(c){
-
-            var i= abc.indexOf(c.toLowerCase());
-
-            /**
-             * necesitamos saber donde estamos en la matriz del arreglo,
-             * como lo vamos a recorrer para cuando llegue al final para poder aplicar el modulo
-             */
-
-            if(i!= -1){
-
-                //obtenemos posicion
-
-                var pos= i;
-
-                //ciframos
-
-                if(action){
-
-                    pos+= desp;
-
-                    //como se mueve
-
-                    pos-=(pos>=1)?1:0;
-                }else{
-
-                    //descrifrar
-
-                    pos-=desp;
-
-                    //movimiento
-
-                    pos +=(pos <0)?1:0;
                 }
-                return abc[pos];
+                return c;
+            };
+        })();
+        //tenemos que saber que el texto este acorde al abc
+        var re = (/([a-z])/ig);
+        //una funcion que se encargue del intercambio
+        return String(txt).replace(re, function(match){
+            return replace(match);
+        });
+        
+    };
 
+    return{
+        encode : function(txt, numero){
+            return proceso(txt, numero, true);
+        },
 
-            }
-
-            return c;
-        };
-    })();
-    
-    //tenemos que saber que el texto este acorde al abc
-    var re= (/[a-z]/ig);
-
-    //funcion que se encargue del intercambio
-
-    return String(txt).replace(re, function(match){
-
-        return replace(match);
-    });
-
-};
-
-return{
-
-    //codificamos
-
-    encode : function(txt, desp){
-
-        return proceso(txt, desp, true);
-
-
-    },
-
-    decode : function (txt, desp){
-
-        return proceso(txt, desp, false);
-    }
-};
-//finaliza la función
+        decode : function(txt, numero){
+            return proceso(txt, numero, false);
+        }
+    };
 })();
 
+//funcion de cifrado
+
 function cifrar(){
-
-    document.getElementById('resultado').innerHTML = cesar.encode(document.getElementById("cadena"), value, 3);
+   
+   const numero= document.getElementById("numero").value
+   document.getElementById("resultado").innerHTML =cesar.encode(document.getElementById("cadena").value, Number(numero));
 }
-function descifrar(){
 
-    document.getElementById('resultado').innerHTML = cesar.decode(document.getElementById("cadena"), value, 3);
+//funcion de descifrado
+
+function descifrar(){
+   
+    const numero= document.getElementById("numero").value
+    document.getElementById("resultado").innerHTML =cesar.decode(document.getElementById("cadena").value, Number(numero));
+    
 }
